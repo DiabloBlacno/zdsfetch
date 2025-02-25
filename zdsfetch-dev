@@ -1,5 +1,5 @@
 #!/bin/sh
-zds_separator="UwU"
+zds_separator="="
 zds_user_separator="/"
 zds_get_os=$(uname -s)
 zds_get_kernel_ver=$(uname -r)
