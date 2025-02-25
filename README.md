@@ -2,8 +2,8 @@
 # zdsfetch
 Preview(DEV) Version.
 NewList:
-Added support for linux-zen, linux hardened, linux-libre and linux-lts
-Added settings for separator and user-separator(separates za dom spremni and username)
+1. _Added support for linux-zen, linux hardened, linux-libre and linux-lts_
+2. _Added settings for separator and user-separator(separates za dom spremni and username)_
 
 An alternative for neofetch and fastfetch
 Dependencies:
@@ -13,7 +13,7 @@ sh (usually pre-installed on unix-like os)
 Build instructions:
 Clone repo:
 ```sh
-git clone https://github.com/diabloblacno/zdsfetch
+git clone https://github.com/diabloblacno/zdsfetch/tree/dev
 ```
 cd into it
 ```sh
@@ -21,7 +21,7 @@ cd zdsfetch
 ```
 compile main
 ```sh
-sh zdsfetch
+sh zdsfetch && chmod +x zdsfetch-dev
 ```
 copy it to /bin and /sbin (/usr/local/bin and /usr/local/sbin on BSD)
 ```sh
