@@ -1,37 +1,46 @@
 #!/bin/sh
-zds_separator="="
+zds_separator="UwU"
 zds_user_separator="/"
 zds_get_os=$(uname -s)
 zds_get_kernel_ver=$(uname -r)
 zds_user=$(whoami)
 
+printver=1 #Chooses, will version be printed. (-v flag)
+
+if [ $printver = 1 ]; then
+	zds_version="Version $zds_separator ZDSFetch DEV(rolling-release)"
+elif [ $printver = 0 ]; then
+	unset zds_version
+fi
+
 zds_linux_fetch ()  { 
     printf "
    @    Za dom spremni! $zds_user_separator $zds_user 
  __@_   OS $zds_separator ZDS_Linux 
-/    \  Kernel = $zds_get_os $zds_get_kernel_ver 
-|    |  Shell = $SHELL 
-|____| 
+/    \  Kernel $zds_separator $zds_get_os $zds_get_kernel_ver 
+|    |  Shell $zds_separator $SHELL 
+|____|  $zds_version
 "
 }
 
 zds_netbsd_fetch () { 
     printf "
 *------/           Za dom spremni! $zds_user_separator $zds_user 
-*      |       |   OS = ZDS_BSD (NetBSD Version) 
+*      |       |   OS $zds_separator ZDS_BSD (NetBSD Version) 
 *------|_______|   Kernel = $zds_separator $zds_get_kernel_ver 
 *                  Shell $zds_separator $SHELL 
-*                  
+*                  $zds_version
 * \n"
 }
 
 zds_bsd_fetch () { 
     printf "
 /           Za dom spremni! $zds_user_separator $zds_user 
-|       |   OS = ZDS_BSD 
+|       |   OS $zds_separator ZDS_BSD 
 |_______|   Kernel $zds_separator $zds_get_os $zds_get_kernel_ver 
-            Shell $zds_separator $SHELL 
-"
+            Shell $zds_separator $SHELL
+	    $zds_version 
+"           
 }
 
 zds_unknown_fetch () {
@@ -40,21 +49,24 @@ zds_unknown_fetch () {
 #  #       OS $zds_separator UNKNOWN ( $zds_get_os)
   #        Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
   #        Shell $zds_separator $SHELL
-     
+           $zds_version
   # 
 "
 }
 
 if [ "$zds_get_os" = "Linux" ] || [ "$zds_get_os" = "Linux-zen" ] || [ "$zds_get_os" = "Linux-Libre" ] || [ "$zds_get_os" = "Linux Hardened" ] || [ "$zds_get_os" = "Linux LTS"; then
     zds_linux_fetch
-
+    printver=0
 elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_get_os" = "DragonFlyBSD" ] || [ "$zds_get_os" = "HardenedBSD" ] || [ "$zds_get_os" = "MidnightBSD" ] || [ "$zds_get_os" = "GhostBSD" ]; then
     zds_bsd_fetch
- 
+    printver=0
 elif [ "$zds_get_os" = "NetBSD" ]; then
     zds_netbsd_fetch
-
+    printver=0
 else
 	zds_unknown_fetch
 fi
+
+
+
 
