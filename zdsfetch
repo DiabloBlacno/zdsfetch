@@ -1,0 +1,59 @@
+#!/bin/sh
+
+zds_get_os=$(uname -s)
+zds_get_kernel_ver=$(uname -r)
+zds_user=$(whoami)
+
+zds_linux_fetch ()  { 
+    printf "
+   @    Za dom spremni! / $zds_user 
+ __@_   OS = ZDS_Linux 
+/    \  Kernel = Linux $zds_get_kernel_ver 
+|    |  Shell = $SHELL 
+|____| 
+"
+}
+
+zds_netbsd_fetch () { 
+    printf "
+ ------/           Za dom spremni! / $zds_user 
+*      |       |   OS = ZDS_BSD (NetBSD Version) 
+*------|_______|   Kernel = NetBSD $zds_get_kernel_ver 
+*                  Shell = $SHELL 
+* 
+* \n"
+}
+
+zds_bsd_fetch () { 
+    printf "
+/           Za dom spremni! / $zds_user 
+|       |   OS = ZDS_BSD 
+|_______|   Kernel = $zds_get_os $zds_get_kernel_ver 
+            Shell = $SHELL 
+"
+}
+
+zds_unknown_fetch () {
+	printf "
+ ##        Za dom spremni! / $zds_user       
+#  #       OS = UNKNOWN ( $zds_get_os)
+  #        Kernel = $zds_get_os $zds_get_kernel_ver
+  #        Shell = $SHELL
+     
+  # 
+"
+}
+
+if [ "$zds_get_os" = "Linux" ]; then
+    zds_linux_fetch
+
+elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_get_os" = "DragonFlyBSD" ] || [ "$zds_get_os" = "HardenedBSD" ] || [ "$zds_get_os" = "MidnightBSD" ] || [ "$zds_get_os" = "GhostBSD" ]; then
+    zds_bsd_fetch
+ 
+elif [ "$zds_get_os" = "NetBSD" ]; then
+    zds_netbsd_fetch
+
+else
+	zds_unknown_fetch
+fi
+
