@@ -1,11 +1,12 @@
 ![zdsfetch](https://github.com/user-attachments/assets/6687edf1-4f60-4e2f-8056-b4c11505d355)
 # zdsfetch
 An alternative for neofetch and fastfetch
-Dependencies:
+_There's also preview(dev) version_
+## Dependencies:
 Linux or other UNIX-Like OS. Windows not supported.
 Works best on Linux and BSD. Other OS marked as unknown
 sh (usually pre-installed on unix-like os)
-Build instructions:
+## Build instructions:
 Clone repo:
 ```sh
 git clone https://github.com/diabloblacno/zdsfetch
