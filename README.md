@@ -1,5 +1,5 @@
-![zdsfetch](https://github.com/user-attachments/assets/6687edf1-4f60-4e2f-8056-b4c11505d355)
-# zdsfetch-dev
+
+# zdsfetch-dev![2025-02-26_00-08](https://github.com/user-attachments/assets/877fed4b-f3ef-4ad9-926f-3b6b337e97c7)
 Preview(DEV) Version.
 NewList:
 1. _Added support for linux-zen, linux hardened, linux-libre and linux-lts_
@@ -13,7 +13,7 @@ sh (usually pre-installed on unix-like os)
 ## Build instructions:
 Clone repo:
 ```sh
-git clone https://github.com/diabloblacno/zdsfetch/tree/dev
+git clone -b dev https://github.com/diabloblacno/zdsfetch/
 ```
 cd into it
 ```sh
