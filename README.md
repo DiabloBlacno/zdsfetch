@@ -1,5 +1,10 @@
 ![zdsfetch](https://github.com/user-attachments/assets/6687edf1-4f60-4e2f-8056-b4c11505d355)
 # zdsfetch
+Preview(DEV) Version.
+NewList:
+Added support for linux-zen, linux hardened, linux-libre and linux-lts
+Added settings for separator and user-separator(separates za dom spremni and username)
+
 An alternative for neofetch and fastfetch
 Dependencies:
 Linux or other UNIX-Like OS. Windows not supported.
