@@ -1,16 +1,16 @@
 ![zdsfetch](https://github.com/user-attachments/assets/6687edf1-4f60-4e2f-8056-b4c11505d355)
-# zdsfetch
+# zdsfetch-dev
 Preview(DEV) Version.
 NewList:
 1. _Added support for linux-zen, linux hardened, linux-libre and linux-lts_
 2. _Added settings for separator and user-separator(separates za dom spremni and username)_
 
 An alternative for neofetch and fastfetch
-Dependencies:
+## Dependencies:
 Linux or other UNIX-Like OS. Windows not supported.
 Works best on Linux and BSD. Other OS marked as unknown
 sh (usually pre-installed on unix-like os)
-Build instructions:
+## Build instructions:
 Clone repo:
 ```sh
 git clone https://github.com/diabloblacno/zdsfetch/tree/dev
