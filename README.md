@@ -7,9 +7,9 @@ NewList:
 2. _Added ASCII Text option. Currently compatible only with OpenIndiana_
 An alternative for neofetch and fastfetch
 ## Compatible with
-Supported fully:Linux, BSD
-Supported only in DEV version: Illumos
-Maybe supported: Windows
+_Supported fully:Linux, BSD\n
+Supported only in DEV version: Illumos\n
+Maybe supported: Windows\n_
 ## Dependencies:
 sh (usually pre-installed on unix-like os) or bash
 ## Build instructions:
