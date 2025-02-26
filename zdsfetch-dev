@@ -5,7 +5,7 @@ zds_get_os=$(uname -s)
 zds_get_kernel_ver=$(uname -r)
 zds_user=$(whoami)
 zds_ascii_fetch=0
-#NOTE=Currently only OpenIndiana supports change beetween ascii(letters) and ascii(logo).
+#NOTE=Currently only OpenIndiana and BSD supports change beetween ascii(letters) and ascii(logo).
 
 
 
@@ -48,6 +48,20 @@ zds_bsd_fetch () {
 "           
 }
 
+zds_bsd_ascii_fetch () {
+	printf "
+############    ########  #############     Za dom spremni! $zds_user_separator $zds_user         
+#           #   #         #            #    OS $zds_separator $zds_get_os ( ASCII-text Logo )
+#           #   #         #            #    Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+#           #   #         #            #    Shell $zds_separator $SHELL
+#           #   #######   #            #    $zds_version
+############          #   #            #
+#           #         #   #            #
+#           #         #   #            #
+############    #######   ############# 
+"
+}
+
 zds_unknown_fetch () {
 	printf "
  ##        Za dom spremni! $zds_user_separator $zds_user       
@@ -63,7 +77,7 @@ zds_unknown_fetch () {
 zds_oi_ascii_fetch () {
 	printf "
  #####   #  Za dom spremni! $zds_user_separator $zds_user
-#     #     OS $zds_separator OpenIndiana ( ASCII Logo )
+#     #     OS $zds_separator OpenIndiana ( ASCII-text Logo )
 #     #  #  Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
 #     #  #  Shell $zds_separator $SHELL
  #####   #  $zds_version
@@ -135,6 +149,9 @@ if [ "$zds_get_os" = "Linux" ] || [ "$zds_get_os" = "Linux-zen" ] || [ "$zds_get
 elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_get_os" = "DragonFlyBSD" ] || [ "$zds_get_os" = "HardenedBSD" ] || [ "$zds_get_os" = "MidnightBSD" ] || [ "$zds_get_os" = "GhostBSD" ]; then
     zds_bsd_fetch
     printver=0
+    if [ "$zds_ascii_fetch" -eq 1]; then
+	    zds_bsd_ascii_fetch
+    fi
 elif [ "$zds_get_os" = "NetBSD" ]; then
     zds_netbsd_fetch
     printver=0
