@@ -23,7 +23,7 @@ cd zdsfetch
 ```
 compile main
 ```sh
-sh zdsfetch && chmod +x zdsfetch-dev
+sh zdsfetch-dev && chmod +x zdsfetch-dev
 ```
 copy it to /bin and /sbin (/usr/local/bin and /usr/local/sbin on BSD)
 ```sh
