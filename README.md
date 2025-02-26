@@ -3,14 +3,15 @@
 
 Preview(DEV) Version.
 NewList:
-1. _Added support for linux-zen, linux hardened, linux-libre and linux-lts_
-2. _Added settings for separator and user-separator(separates za dom spremni and username)_
-
+1. _Added support for Illumos_
+2. _Added ASCII Text option. Currently compatible only with OpenIndiana_
 An alternative for neofetch and fastfetch
+## Compatible with
+Supported fully:Linux, BSD
+Supported only in DEV version: Illumos
+Maybe supported: Windows
 ## Dependencies:
-Linux or other UNIX-Like OS. Windows not supported.
-Works best on Linux and BSD. Other OS marked as unknown
-sh (usually pre-installed on unix-like os)
+sh (usually pre-installed on unix-like os) or bash
 ## Build instructions:
 Clone repo:
 ```sh
