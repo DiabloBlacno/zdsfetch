@@ -4,7 +4,8 @@
 Preview(DEV) Version.
 NewList:
 1. _Added support for Illumos_
-2. _Added ASCII Text option. Currently compatible only with OpenIndiana_
+2. _Added ASCII Text option. Currently compatible only with OpenIndiana(and BSD)_
+3. _Added BSD ASCII logo_
 An alternative for neofetch and fastfetch
 ## Compatible with
 _Supported fully:Linux, BSD\n
