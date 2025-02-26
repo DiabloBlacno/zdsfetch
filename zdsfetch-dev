@@ -4,6 +4,11 @@ zds_user_separator="/"
 zds_get_os=$(uname -s)
 zds_get_kernel_ver=$(uname -r)
 zds_user=$(whoami)
+zds_ascii_fetch=0
+#NOTE=Currently only OpenIndiana supports change beetween ascii(letters) and ascii(logo).
+
+
+
 
 printver=1 #Chooses, will version be printed. (-v flag)
 
@@ -54,6 +59,76 @@ zds_unknown_fetch () {
 "
 }
 
+
+zds_oi_ascii_fetch () {
+	printf "
+ #####   #  Za dom spremni! $zds_user_separator $zds_user
+#     #     OS $zds_separator OpenIndiana ( ASCII Logo )
+#     #  #  Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+#     #  #  Shell $zds_separator $SHELL
+ #####   #  $zds_version
+ "
+}
+
+zds_oi_fetch () {
+printf "
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@%@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@%@@@@        Za dom spremni! $zds_user_separator $zds_user
+@@@@@@@@@@@@@@@#@@@@@@@#@@@        OS $zds_separator OpenIndiana 
+@@@@@@@@@@@@@@#%#@@@@@@@%@@        Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+@@@%+=*@@@@@@@#%%@@@@@@@%@@        Shell $zds_separator $SHELL
+@@#----=@@@@@@@%@@@@@@@@%@@        $zds_version
+@@%+-----=#@@@@@@@@@@@@@%@@
+@@@@=------=@@@@@@@@@@@@%@@
+@@@@#-------=%@@@@@@@@@@@@@
+@@@@@---------*@@@@@@@@#@@@
+@@@@@%----------#@@@@%#@@@@
+@@@@@@@=----#%@%+-#@%%@@@@@
+@@@@@@@@@%=#@@@@@%@@@@@@@@@
+@@@@@@@@@@%@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"
+}
+
+zds_illumos_fetch () {
+	printf "
+: .:.
+.:::::.-=
+..::::::#-
+.::::::+#
+::::::##=
+..:::::###
+-: :::###+
+-----*###-
+: :---*####:
+-----=#####=
+. .----*#####*
+======-#######.              -##########-         Za dom spremni! $zds_user_separator
+=======#######*          +######*                 OS $zds_separator $zds_get_os
+:  .--===*#######*     .#####+.                   Kernel $zds_separator $zds_get_kernel $zds_get_kernel_ver
+.========+########- :#####.                       Shell $zds_separator $SHELL                       
+:=+++++#############*                             $zds_version
+:++++++++++++##########*:
+.+++++****########**
+. .*****########++
+.:+*******#######++.
+****#######+++
+:*-..########++
+=*+*#######*+.
+*#######+.
+#######+
+#######*+
++#######
+########
+:####*####
+.=####+
++##.+#:
+=###=
+-##+
+*#=
+"               
+}
 if [ "$zds_get_os" = "Linux" ] || [ "$zds_get_os" = "Linux-zen" ] || [ "$zds_get_os" = "Linux-Libre" ] || [ "$zds_get_os" = "Linux Hardened" ] || [ "$zds_get_os" = "Linux LTS"; then
     zds_linux_fetch
     printver=0
@@ -63,10 +138,24 @@ elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_g
 elif [ "$zds_get_os" = "NetBSD" ]; then
     zds_netbsd_fetch
     printver=0
+
+elif [ "$zds_get_os" = "SunOS" ]; then
+	zds_etc_release=$(cat /etc/release)
+#As far as i know, its unpossible to create value-less variable on Shell Script, so i had to give value 4 to zds_distro variable
+	zds_distro=4
+	if [ "$zds_etc_release" = "             OpenIndiana Hipster 2023.10 (illumos)
+              Copyright 2010-2023 OpenIndiana Community.
+                         All rights reserved." ]; then
+			 printver=0
+	                 zds_distro="OI"  
+	else
+		zds_illumos_fetch
+	fi
+        if [ "$zds_distro" = "OI" ] && [ "$zds_ascii_fetch" = 1 ]; then
+		zds_oi_ascii_fetch
+	elif [ "$zds_distro" = "OI" && [ "$zds_ascii_fetch" -eq 1]; then
+		zds_oi_fetch
+	fi
 else
 	zds_unknown_fetch
 fi
-
-
-
-
