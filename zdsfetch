@@ -1,59 +1,204 @@
 #!/bin/sh
-
+zds_separator="="
+zds_user_separator="/"
 zds_get_os=$(uname -s)
 zds_get_kernel_ver=$(uname -r)
 zds_user=$(whoami)
+zds_ascii_fetch=1
+#NOTE=Currently only OpenIndiana and BSD supports change beetween ascii(letters) and ascii(logo).
+showlogo=1
+
+
+
+printver=1 #Chooses, will version be printed. ( -v flag)
+
+if [ $printver = 1 ]; then
+	zds_version="Version $zds_separator ZDSFetch Main 1.1"
+elif [ $printver = 0 ]; then
+	unset zds_version
+fi
 
 zds_linux_fetch ()  { 
     printf "
-   @    Za dom spremni! / $zds_user 
- __@_   OS = ZDS_Linux 
-/    \  Kernel = Linux $zds_get_kernel_ver 
-|    |  Shell = $SHELL 
-|____| 
+   @    Za dom spremni! $zds_user_separator $zds_user 
+ __@_   OS $zds_separator ZDS_Linux 
+/    \  Kernel $zds_separator $zds_get_os $zds_get_kernel_ver 
+|    |  Shell $zds_separator $SHELL 
+|____|  $zds_version
 "
 }
 
 zds_netbsd_fetch () { 
     printf "
- ------/           Za dom spremni! / $zds_user 
-*      |       |   OS = ZDS_BSD (NetBSD Version) 
-*------|_______|   Kernel = NetBSD $zds_get_kernel_ver 
-*                  Shell = $SHELL 
-* 
+*------/           Za dom spremni! $zds_user_separator $zds_user 
+*      |       |   OS $zds_separator ZDS_BSD (NetBSD Version) 
+*------|_______|   Kernel = $zds_separator $zds_get_kernel_ver 
+*                  Shell $zds_separator $SHELL 
+*                  $zds_version
 * \n"
 }
 
 zds_bsd_fetch () { 
     printf "
-/           Za dom spremni! / $zds_user 
-|       |   OS = ZDS_BSD 
-|_______|   Kernel = $zds_get_os $zds_get_kernel_ver 
-            Shell = $SHELL 
+/           Za dom spremni! $zds_user_separator $zds_user 
+|       |   OS $zds_separator ZDS_BSD 
+|_______|   Kernel $zds_separator $zds_get_os $zds_get_kernel_ver 
+            Shell $zds_separator $SHELL
+	    $zds_version 
+"           
+}
+
+zds_bsd_ascii_fetch () {
+	printf "
+############    ########  #############     Za dom spremni! $zds_user_separator $zds_user         
+#           #   #         #            #    OS $zds_separator $zds_get_os ( ASCII-text Logo )
+#           #   #         #            #    Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+#           #   #         #            #    Shell $zds_separator $SHELL
+#           #   #######   #            #    $zds_version
+############          #   #            #
+#           #         #   #            #
+#           #         #   #            #
+############    #######   ############# 
 "
 }
 
 zds_unknown_fetch () {
 	printf "
- ##        Za dom spremni! / $zds_user       
-#  #       OS = UNKNOWN ( $zds_get_os)
-  #        Kernel = $zds_get_os $zds_get_kernel_ver
-  #        Shell = $SHELL
-     
+ ##        Za dom spremni! $zds_user_separator $zds_user       
+#  #       OS $zds_separator UNKNOWN ( $zds_get_os)
+  #        Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+  #        Shell $zds_separator $SHELL
+           $zds_version
   # 
 "
 }
 
-if [ "$zds_get_os" = "Linux" ]; then
-    zds_linux_fetch
 
-elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_get_os" = "DragonFlyBSD" ] || [ "$zds_get_os" = "HardenedBSD" ] || [ "$zds_get_os" = "MidnightBSD" ] || [ "$zds_get_os" = "GhostBSD" ]; then
-    zds_bsd_fetch
- 
-elif [ "$zds_get_os" = "NetBSD" ]; then
-    zds_netbsd_fetch
+zds_oi_ascii_fetch () {
+	printf "
+ #####   #  Za dom spremni! $zds_user_separator $zds_user
+#     #     OS $zds_separator OpenIndiana ( ASCII-text Logo )
+#     #  #  Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+#     #  #  Shell $zds_separator $SHELL
+ #####   #  $zds_version
+ "
+}
 
+zds_oi_fetch () {
+printf "
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@%@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@%@@@@        Za dom spremni! $zds_user_separator $zds_user
+@@@@@@@@@@@@@@@#@@@@@@@#@@@        OS $zds_separator OpenIndiana 
+@@@@@@@@@@@@@@#%#@@@@@@@%@@        Kernel $zds_separator $zds_get_os $zds_get_kernel_ver
+@@@%+=*@@@@@@@#%%@@@@@@@%@@        Shell $zds_separator $SHELL
+@@#----=@@@@@@@%@@@@@@@@%@@        $zds_version
+@@%+-----=#@@@@@@@@@@@@@%@@
+@@@@=------=@@@@@@@@@@@@%@@
+@@@@#-------=%@@@@@@@@@@@@@
+@@@@@---------*@@@@@@@@#@@@
+@@@@@%----------#@@@@%#@@@@
+@@@@@@@=----#%@%+-#@%%@@@@@
+@@@@@@@@@%=#@@@@@%@@@@@@@@@
+@@@@@@@@@@%@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"
+}
+
+zds_illumos_fetch () {
+	printf "
+: .:.
+.:::::.-=
+..::::::#-
+.::::::+#
+::::::##=
+..:::::###
+-: :::###+
+-----*###-
+: :---*####:
+-----=#####=
+. .----*#####*
+======-#######.              -##########-         Za dom spremni! $zds_user_separator $zds_user
+=======#######*          +######*                 OS $zds_separator $zds_get_os
+:  .--===*#######*     .#####+.                   Kernel $zds_separator $zds_get_kernel $zds_get_kernel_ver
+.========+########- :#####.                       Shell $zds_separator $SHELL                       
+:=+++++#############*                             $zds_version
+:++++++++++++##########*:
+.+++++****########**
+. .*****########++
+.:+*******#######++.
+****#######+++
+:*-..########++
+=*+*#######*+.
+*#######+.
+#######+
+#######*+
++#######
+########
+:####*####
+.=####+
++##.+#:
+=###=
+-##+
+*#=
+"               
+}
+
+
+# Fuck Microsoft and Windows! Shitty proprietary software!! Nwwah!!!
+zds_windows_fetch () {
+	printf "
+_______________ Za dom spremni! $zds_user_separator $zds_user
+|      |      | OS $zds_separator $zds_get_os
+|      |      | Kernel $zds_separator $zds_get_kernel $zds_get_kernel_ver
+|      |      | Shell $zds_separator $SHELL
+|------|------| $zds_version
+|      |      | 
+|      |      |
+|______|______|
+" 
+}
+if [ "$1" = "-v" ]; then
+	echo $zds_version
+	showlogo=0
+fi
+if [ "$showlogo" = 1 ]; then
+	if [ "$zds_get_os" = "Linux" ] || [ "$zds_get_os" = "Linux-zen" ] || [ "$zds_get_os" = "Linux-Libre" ] || [ "$zds_get_os" = "Linux Hardened" ] || [ "$zds_get_os" = "Linux LTS" ]; then
+    	zds_linux_fetch
+    	printver=0
+	elif [ "$zds_get_os" = "FreeBSD" ] || [ "$zds_get_os" = "OpenBSD" ] || [ "$zds_get_os" = "DragonFlyBSD" ] || [ "$zds_get_os" = "HardenedBSD" ] || [ "$zds_get_os" = "MidnightBSD" ] || [ "$zds_get_os" = "GhostBSD" ]; then
+    	printver=0
+    	if [ "$zds_ascii_fetch" -eq 1 ]; then
+		    zds_bsd_ascii_fetch
+    	fi
+	elif [ "$zds_get_os" = "NetBSD" ]; then
+    		zds_netbsd_fetch
+    		printver=0
+
+	elif [ "$zds_get_os" = "SunOS" ]; then
+		zds_etc_release=$(cat /etc/release)
+	#As far as i know, its unpossible to create value-less variable on Shell Script, so i had to give value 4 to zds_distro variable
+		zds_distro=4
+		if [ "$zds_etc_release" = "             OpenIndiana Hipster 2023.10 (illumos)
+              Copyright 2010-2023 OpenIndiana Community.
+                         All rights reserved." ]; then
+				 printver=0
+	        	         zds_distro="OI"  
+		else
+			zds_illumos_fetch
+		fi
+        	if [ "$zds_distro" = "OI" ] && [ "$zds_ascii_fetch" = 1 ]; then
+			zds_oi_ascii_fetch
+		elif [ "$zds_distro" = "OI" ] && [ "$zds_ascii_fetch" -eq 1]; then
+			zds_oi_fetch
+	fi
+	
+	elif [ "$zds_get_os" = "Windows_NT" ]; then
+		zds_windows_fetch
+		#Fuck Microsoft!
+	fi
 else
 	zds_unknown_fetch
+
 fi
 
