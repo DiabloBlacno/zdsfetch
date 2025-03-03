@@ -1,11 +1,20 @@
-![zdsfetch](https://github.com/user-attachments/assets/6687edf1-4f60-4e2f-8056-b4c11505d355)
-# zdsfetch
+  ![shhs](https://github.com/user-attachments/assets/98be4194-4d90-497d-be1f-cd67008b1e23)
+
+# Zdsfetch 1.1
 An alternative for neofetch and fastfetch
 _There's also preview(dev) version_
+
+## Support 
+Currently zdsfetch support this OS's:
+Linux\n
+(open(free(hardened(ghost(midnight(etc))))))BSD\n
+Illumos(OpenIndiana, OmniOS, etc)\n
+Windows(currently there is only win10 icon\n
+### ASCII text icons
+OpenIndiana\n
+BSD\N
 ## Dependencies:
-Linux or other UNIX-Like OS. Windows not supported.
-Works best on Linux and BSD. Other OS marked as unknown
-sh (usually pre-installed on unix-like os)
+Sh or any other .sh(bash, zsh, etc
 ## Build instructions:
 Clone repo:
 ```sh
