@@ -13,7 +13,7 @@ showlogo=1
 printver=1 #Chooses, will version be printed. ( -v flag)
 
 if [ $printver = 1 ]; then
-	zds_version="Version $zds_separator ZDSFetch Main 1.1"
+	zds_version="Version $zds_separator ZDSFetch Main 1.2"
 elif [ $printver = 0 ]; then
 	unset zds_version
 fi
@@ -193,7 +193,7 @@ if [ "$showlogo" = 1 ]; then
 			zds_oi_fetch
 	fi
 	
-	elif [ "$zds_get_os" = "Windows_NT" ]; then
+	elif [ "$zds_get_os" = "Windows_NT" ] || [ "$zds_get_os" = "MINGW64_NT-10.0-19044" ]; then # I guess the MINGW64 thing is Windows 10 LTSC
 		zds_windows_fetch
 		#Fuck Microsoft!
 	fi
