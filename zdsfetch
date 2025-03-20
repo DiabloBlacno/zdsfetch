@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 zds_separator="="
 zds_user_separator="/"
 zds_get_os=$(uname -s)
@@ -13,7 +13,7 @@ showlogo=1
 printver=1 #Chooses, will version be printed. ( -v flag)
 
 if [ $printver = 1 ]; then
-	zds_version="Version $zds_separator ZDSFetch Main 1.2"
+	zds_version="Version $zds_separator ZDSFetch Main 1.2.1"
 elif [ $printver = 0 ]; then
 	unset zds_version
 fi
