@@ -1,10 +1,10 @@
   ![shhs](https://github.com/user-attachments/assets/98be4194-4d90-497d-be1f-cd67008b1e23)
 
-# Zdsfetch 1.2
+# Zdsfetch 1.2.1
 An alternative for neofetch and fastfetch
 _There's also preview(dev) version_
 ## New list
-  _* Added support for Windows 10 LTSC_
+  _* Minor update: Changed format from DOS to UNIX_
 ## Support 
 Currently zdsfetch support this OS's:
 Linux\n
