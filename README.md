@@ -1,4 +1,4 @@
-  ![shhs](https://github.com/user-attachments/assets/98be4194-4d90-497d-be1f-cd67008b1e23)
+![zdsfetch](https://github.com/user-attachments/assets/649fe5a6-666f-49f0-8561-b90b3eb6e032)
 
 # Zdsfetch 1.2.1
 An alternative for neofetch and fastfetch
