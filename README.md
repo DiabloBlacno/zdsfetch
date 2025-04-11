@@ -1,8 +1,6 @@
 ![zdsfetch](https://github.com/user-attachments/assets/649fe5a6-666f-49f0-8561-b90b3eb6e032)
 
-# Zdsfetch 1.2.1
-An alternative for neofetch and fastfetch
-_There's also preview(dev) version_
+# No longer maintained! 
 ## New list
   _* Minor update: Changed format from DOS to UNIX_
 ## Support 
